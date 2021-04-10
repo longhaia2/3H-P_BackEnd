@@ -14,9 +14,9 @@ public class roomchallenge {
     private String room_name;
     private String level;
     private String pass;
-    private LocalDateTime time;
+    private String time;
 
-    public roomchallenge(int room_id, String room_name, String level, String pass, LocalDateTime time, int user_id) {
+    public roomchallenge(int room_id, String room_name, String level, String pass, String time, int user_id) {
         this.room_id = room_id;
         this.room_name = room_name;
         this.level = level;
@@ -25,11 +25,11 @@ public class roomchallenge {
         this.user_id = user_id;
     }
 
-    public LocalDateTime getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
