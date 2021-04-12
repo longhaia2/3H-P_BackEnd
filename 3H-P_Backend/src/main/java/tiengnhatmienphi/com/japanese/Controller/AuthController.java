@@ -21,7 +21,7 @@ import tiengnhatmienphi.com.japanese.security.MyUserDetails;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value = "/auth")
+@RequestMapping(value = "/api/auth")
 public class AuthController {
     @Autowired
     UserRepository userRepository;
@@ -41,7 +41,6 @@ public class AuthController {
     @CrossOrigin
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody() AuthRequest loginRequest) {
-        System.out.println("ádsadasd");
         if (userRepository.findByUsername(loginRequest.getUsername()).orElse(null) == null)
             return  ResponseEntity.ok(new GenericResponse("Username không tồn tại")) ;
         Authentication authentication;
