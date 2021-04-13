@@ -40,8 +40,8 @@ public class Question {
     private String ansCorrect;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "questionExam",cascade = CascadeType.ALL)
-    private List<ExamQuestion> listQuestionExam;
+    @ManyToMany(mappedBy = "questions")
+    private List<Exam> exams;
 
 }
 
