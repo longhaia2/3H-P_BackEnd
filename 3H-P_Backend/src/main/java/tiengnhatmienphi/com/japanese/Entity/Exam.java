@@ -1,12 +1,11 @@
 package tiengnhatmienphi.com.japanese.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.lang.reflect.GenericDeclaration;
+import java.lang.reflect.TypeVariable;
 import java.util.Date;
 import java.util.List;
 
@@ -17,10 +16,6 @@ import java.util.List;
 @Builder
 @Table
 public class Exam {
-    //    1 môn hoc có nhiều đề thi
-//    1 dè thi thuojc 1 mon hoc
-//    1 de thi có nhieu câu hỏi
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -38,6 +33,10 @@ public class Exam {
     @Column(name = "content")
     private String content;
 
+    private String level;
+
+     private String term;
+
     @Column(name = "create_by")
     private String createBy;
 
@@ -52,12 +51,23 @@ public class Exam {
     @Column(name = "create_date")
     private Date createDate;
 
+    @Column(name = "status")
+    private Integer status;
+
 
     @JsonIgnore
-    @OneToMany(mappedBy = "examQuestion",cascade = CascadeType.ALL)
-    private List<ExamQuestion> listExamQuestion;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JoinTable(name = "exam_question",
+            joinColumns = @JoinColumn(name = "exam_id"),
+            inverseJoinColumns = @JoinColumn(name = "question_id")
+    )
+    private List<Question> questions;
 
     @JsonIgnore
     @OneToMany(mappedBy = "exam_result",cascade = CascadeType.ALL)
     private List<Result> listResult;
+
+
 }
