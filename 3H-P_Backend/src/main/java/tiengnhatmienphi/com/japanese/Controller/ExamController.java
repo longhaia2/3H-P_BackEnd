@@ -3,7 +3,6 @@ package tiengnhatmienphi.com.japanese.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tiengnhatmienphi.com.japanese.Entity.Exam;
-import tiengnhatmienphi.com.japanese.Entity.roomchallenge;
 import tiengnhatmienphi.com.japanese.Repository.ExamRepository;
 
 import java.util.List;
