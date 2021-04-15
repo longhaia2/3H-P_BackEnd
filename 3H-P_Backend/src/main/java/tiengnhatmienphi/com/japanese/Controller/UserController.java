@@ -1,12 +1,12 @@
 package tiengnhatmienphi.com.japanese.Controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tiengnhatmienphi.com.japanese.Entity.User;
+import tiengnhatmienphi.com.japanese.Entity.enums.ERole;
+import tiengnhatmienphi.com.japanese.Repository.RoleRepository;
 import tiengnhatmienphi.com.japanese.Repository.UserRepository;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -16,17 +16,16 @@ import java.util.NoSuchElementException;
 public class UserController {
     @Autowired
     private UserRepository userRepo;
-
+    @Autowired
+    private RoleRepository roleRepo;
     @GetMapping("/all")
     public List<User> findAll() {
         return userRepo.findAll();
     }
-
     @PostMapping("/add")
     public void add(@RequestBody User us) {
         userRepo.save(us);
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<User> get(@PathVariable Integer id) {
         try {
@@ -36,7 +35,17 @@ public class UserController {
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
     }
-
+    @GetMapping
+    public ResponseEntity<?> updateRoleAdmin(@RequestParam(name = "username") String username) {
+        try {
+            User us = userRepo.findByUsername(username).get();
+            us.setRole(roleRepo.findByName(ERole.ROLE_ADMIN).get());
+            userRepo.save(us);
+            return new ResponseEntity<User>(us, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
+        }
+    }
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Integer id) {
         userRepo.deleteById(id);

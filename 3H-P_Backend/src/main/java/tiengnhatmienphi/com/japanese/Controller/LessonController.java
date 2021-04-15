@@ -46,6 +46,7 @@ public class LessonController {
     public void delete(@PathVariable Integer id) {
         lessonrepo.deleteById(id);
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Lesson st, @PathVariable Integer id) {
         try {

@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import tiengnhatmienphi.com.japanese.Entity.Roomchallenge;
 import tiengnhatmienphi.com.japanese.Entity.User;
 import tiengnhatmienphi.com.japanese.Repository.RoomChallengeRepo;
-import tiengnhatmienphi.com.japanese.Repository.UserRepository;
 import tiengnhatmienphi.com.japanese.Repository.UserRoomRepository;
 
 import java.util.List;
