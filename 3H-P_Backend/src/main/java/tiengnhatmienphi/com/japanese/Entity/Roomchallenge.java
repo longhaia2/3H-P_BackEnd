@@ -1,6 +1,7 @@
 package tiengnhatmienphi.com.japanese.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class roomchallenge {
+public class Roomchallenge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int room_id;
@@ -21,9 +22,9 @@ public class roomchallenge {
     private String pass;
     private String time;
     private int status;
+    private int cout;
 
-//    @ManyToMany(mappedBy = "roomchallenges")
-//    @EqualsAndHashCode.Exclude
-//    @ToString.Exclude
-//    private List<User> users;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "rooms")
+    private List<User>users;
 }
