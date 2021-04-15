@@ -27,7 +27,7 @@ public class ExamController {
     }
 
     @DeleteMapping(value = "delete/{id}")
-    public void deleteex(@PathVariable Integer id){
+    public void delete(@PathVariable Integer id){
         repo.deleteById(id);
     }
 }
