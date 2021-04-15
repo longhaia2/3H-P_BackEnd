@@ -1,9 +1,7 @@
 package tiengnhatmienphi.com.japanese.Entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -15,6 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class User extends Base{
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(unique = true)
     private String username;;
@@ -38,7 +41,7 @@ public class User extends Base{
     private boolean enable = true;
 
 
-    // mapping to Role
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "role_id",
@@ -46,13 +49,17 @@ public class User extends Base{
     )
     private Role role;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @EqualsAndHashCode.Exclude
-    @JoinTable(name="user_room" ,joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "room_id")
+    @ToString.Exclude
+    @JoinTable(name = "user_room",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "room_id")
     )
-    private Collection<roomchallenge> roomchallenges;
+    private List<Roomchallenge>rooms;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "userResult",cascade = CascadeType.ALL)
     private List<Result> results;
 }
