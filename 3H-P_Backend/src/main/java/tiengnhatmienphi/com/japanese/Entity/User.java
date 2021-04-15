@@ -1,10 +1,11 @@
 package tiengnhatmienphi.com.japanese.Entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table
@@ -12,6 +13,11 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 public class User extends Base{
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(unique = true)
     private String username;;
@@ -34,7 +40,8 @@ public class User extends Base{
     @Column
     private boolean enable = true;
 
-    // mapping to Role
+
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "role_id",
@@ -42,15 +49,18 @@ public class User extends Base{
     )
     private Role role;
 
-    public void setUsername(String admin) {
-    }
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JoinTable(name = "user_room",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "room_id")
+    )
+    private List<Roomchallenge>rooms;
 
-    public void setEnable(boolean b) {
-    }
+    @JsonIgnore
+    @OneToMany(mappedBy = "userResult",cascade = CascadeType.ALL)
+    private List<Result> results;
 
-    public void setPassword(String encode) {
-    }
-
-    public void setRole(Role role) {
-    }
 }
