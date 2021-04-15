@@ -37,12 +37,12 @@ public class JapaneseApplication {
             roleRepository.save(roleAdmin);
         }
 
-        User user = new User();
-        user.setEnable(true);
-        user.setUsername("admin");
-        user.setPassword(passwordEncoder.encode("12345"));
-        user.setRole(roleRepository.findByName(ERole.ROLE_ADMIN).get());
-
-        userRepository.save(user);
+//        User user = new User();
+//        user.setEnable(true);
+//        user.setUsername("admin");
+//        user.setPassword(passwordEncoder.encode("12345"));
+//        user.setRole(roleRepository.findByName(ERole.ROLE_ADMIN).get());
+//
+//        userRepository.save(user);
     }
 }

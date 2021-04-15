@@ -41,4 +41,16 @@ public class User extends Base{
             foreignKey = @ForeignKey(name = "fk_user_role")
     )
     private Role role;
+
+    public void setUsername(String admin) {
+    }
+
+    public void setEnable(boolean b) {
+    }
+
+    public void setPassword(String encode) {
+    }
+
+    public void setRole(Role role) {
+    }
 }
