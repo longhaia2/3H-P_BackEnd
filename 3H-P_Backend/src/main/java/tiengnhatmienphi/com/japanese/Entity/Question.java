@@ -22,6 +22,12 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "term")
+    private String term;
+
+    @Column(name = "level")
+    private String level;
+
     @Column(name = "content")
     private String content;
 
