@@ -7,6 +7,10 @@ import tiengnhatmienphi.com.japanese.Entity.enums.ERole;
 
 import java.util.Optional;
 
+/**
+ * Phan Thi Dieu Hien
+ **/
+
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Integer> {
     Optional<Role> findByName(ERole role);

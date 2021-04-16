@@ -7,6 +7,7 @@ import tiengnhatmienphi.com.japanese.Repository.ExamRepository;
 
 import java.util.List;
 
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/exam")
