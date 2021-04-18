@@ -1,5 +1,4 @@
 package tiengnhatmienphi.com.japanese.Controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +26,7 @@ public class LessonController {
      */
     @GetMapping("/all")
     public List<Lesson> findAll() {
-//        List<Lesson> lessonList = lessonrepo.findByabcd("Bai1", "N1");
+
         return lessonrepo.findAll();
     }
 
@@ -49,7 +48,6 @@ public class LessonController {
     public void add(@RequestBody Lesson ls) {
         lessonrepo.save(ls);
     }
-
     /**
      * Api lấy theo Id
      * @param id
