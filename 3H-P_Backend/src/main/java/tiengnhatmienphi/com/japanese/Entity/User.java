@@ -122,6 +122,17 @@ public class User extends Base{
     @Column
     private String phoneNumber;
 
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
+    }
+    @Lob
+    @Column
+    private String Image;
+
     @Column
     private String gender;
 

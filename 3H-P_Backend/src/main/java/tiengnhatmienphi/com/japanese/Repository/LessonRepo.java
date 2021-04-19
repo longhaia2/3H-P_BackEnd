@@ -10,4 +10,9 @@ import java.util.List;
 public interface LessonRepo extends JpaRepository<Lesson, Integer> {
     @Query("SELECT L FROM Lesson L WHERE L.lesson = :lesson AND L.level = :level")
     List<Lesson>findByidlessson(@Param("lesson") String lesson, @Param("level") String level);
+
+    @Query("SELECT L FROM Lesson L WHERE  L.level = :level  AND L.term = :term")
+    List<Lesson>findByidlevel( @Param("level") String level, @Param("term") String term);
+
+  
 }

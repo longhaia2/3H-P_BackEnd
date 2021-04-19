@@ -39,6 +39,11 @@ public class LessonController {
         List<Lesson> lessonList = lessonrepo.findByidlessson(idLesson, level);
         return lessonList;
     }
+    @GetMapping("/{level}/{term}")
+    public List<Lesson> findByidlevel(@PathVariable String level,@PathVariable String term) {
+        List<Lesson> lessonList = lessonrepo.findByidlevel(level, term);
+        return lessonList;
+    }
 
     /**
      * Api thêm mới
@@ -53,6 +58,9 @@ public class LessonController {
      * @param id
      * @return
      */
+//    @RequestMapping(value = "/{id}",
+//            produces = "application/json",
+//            method=RequestMethod.GET)
     @GetMapping("/{id}")
     public ResponseEntity<Lesson> get(@PathVariable Integer id) {
         try {
