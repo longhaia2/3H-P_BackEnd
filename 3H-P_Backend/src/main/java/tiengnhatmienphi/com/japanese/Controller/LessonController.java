@@ -45,6 +45,11 @@ public class LessonController {
         return lessonList;
     }
 
+    @GetMapping("/all/baimoi")
+    public List<Lesson> getLessonByDesc() {
+        List<Lesson> lessonList = lessonrepo.getLessonByDesc();
+        return lessonList;
+    }
     /**
      * Api thêm mới
      * @param ls
@@ -58,9 +63,7 @@ public class LessonController {
      * @param id
      * @return
      */
-//    @RequestMapping(value = "/{id}",
-//            produces = "application/json",
-//            method=RequestMethod.GET)
+
     @GetMapping("/{id}")
     public ResponseEntity<Lesson> get(@PathVariable Integer id) {
         try {

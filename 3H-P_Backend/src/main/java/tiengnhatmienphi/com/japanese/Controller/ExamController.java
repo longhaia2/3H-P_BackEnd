@@ -32,7 +32,11 @@ public class ExamController {
             return new ResponseEntity<Exam>(HttpStatus.NOT_FOUND);
         }
     }
-
+    @GetMapping("/all/exam")
+    public List<Exam> getlistExamOrderByIdDesc() {
+        List<Exam> ExamList = repo.getlistExamOrderByIdDesc();
+        return ExamList;
+    }
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public List<Exam> getAll(){
         return repo.findAll();

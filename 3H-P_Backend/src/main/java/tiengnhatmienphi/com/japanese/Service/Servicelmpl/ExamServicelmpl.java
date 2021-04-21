@@ -106,10 +106,6 @@ public class ExamServicelmpl implements ExamService {
         return null;
     }
 
-//    @Override
-//    public List<Exam> getlistExamByClass(Integer classId) {
-//        return examRepository.getlistExamByClass(classId);
-//    }
 
     @Override
     public List<Exam> getlistExamOrdedByIDDesc() {

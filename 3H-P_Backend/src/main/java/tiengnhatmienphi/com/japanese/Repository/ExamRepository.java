@@ -15,8 +15,9 @@ import java.util.List;
 public interface ExamRepository extends JpaRepository<Exam,Integer> {
 
 
-    @Query("SELECT u from Exam  u where u.status=1 order by u.id desc ")
+    @Query("SELECT u from Exam  u  order by u.id desc ")
     List<Exam> getlistExamOrderByIdDesc();
+
 
 
     //@Query(value = "select  * from exam where code_exam like %:examCode% or subject_id like %:subjectId% or class_id like %:classId%",nativeQuery = true)
