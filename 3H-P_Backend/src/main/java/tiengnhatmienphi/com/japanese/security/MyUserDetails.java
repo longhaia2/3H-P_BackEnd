@@ -49,8 +49,4 @@ public class MyUserDetails implements UserDetails {
         return user.isEnable();
     }
 
-    public Integer getUserId(){
-        return user.getId();
-    }
-
 }

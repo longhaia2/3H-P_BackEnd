@@ -9,24 +9,21 @@ import tiengnhatmienphi.com.japanese.Repository.UserRepository;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/user")
 public class UserController {
     @Autowired
     private UserRepository userRepo;
-
     @GetMapping("/all")
-    public List<User> findAll() {
+    public List<User> findAll(){
         return userRepo.findAll();
     }
-
     @PostMapping("/add")
-    public void add(@RequestBody User us) {
+    public void add(@RequestBody User us)
+    {
         userRepo.save(us);
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<User> get(@PathVariable Integer id) {
         try {
@@ -41,4 +38,5 @@ public class UserController {
     public void delete(@PathVariable Integer id) {
         userRepo.deleteById(id);
     }
+
 }
