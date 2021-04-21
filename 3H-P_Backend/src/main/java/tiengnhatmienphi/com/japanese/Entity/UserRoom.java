@@ -25,6 +25,10 @@ public class UserRoom {
     @Column(name = "user_id")
     private Integer user_id;
 
+    @Column(name = "score")
+    private Integer score;
+
+
 
 
 }

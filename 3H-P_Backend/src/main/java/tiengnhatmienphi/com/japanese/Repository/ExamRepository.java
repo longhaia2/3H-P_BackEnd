@@ -13,6 +13,7 @@ import java.util.List;
 
 public interface ExamRepository extends JpaRepository<Exam,Integer> {
 
+    Exam findByCodeExamAndId(String code_exam, Integer id);
 
     @Query("SELECT u from Exam  u where u.status=1 order by u.id desc ")
     List<Exam> getlistExamOrderByIdDesc();
