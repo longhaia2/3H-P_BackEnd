@@ -54,5 +54,7 @@ public class Question {
     @ManyToMany(mappedBy = "questions")
     private List<Exam> exams;
 
+
+
 }
 
