@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import tiengnhatmienphi.com.japanese.Entity.Exam;
-import tiengnhatmienphi.com.japanese.Entity.Question;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -26,7 +25,7 @@ public interface ExamRepository extends JpaRepository<Exam,Integer> {
     Page<Exam> searchExam(@Param("examCode") String examCode, @Param("subjectId") String subjectId, @Param("classId") String classId, Pageable pageable);
 
 
-    @Modifying
+//    @Modifying
     @Transactional
     @Query("update Exam ex set ex.status=0 where ex.id =:examId")
     void disableExam(@Param("examId") Integer examId);

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value = "/question")
+@RequestMapping(value = "/exam")
 public class ExamQuestionController {
 
     @Autowired
@@ -32,6 +32,7 @@ public class ExamQuestionController {
             return ResponseEntity.ok("Không tìm thấy!");
         }
     }
+
 
 
 }

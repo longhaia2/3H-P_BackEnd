@@ -8,6 +8,10 @@ import tiengnhatmienphi.com.japanese.Model.QuestionModel;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Phan Thi Dieu Hien
+ **/
+
 public interface QuestionService {
     void createQuestion(Question question);
     void deleteQuestion(Question question);

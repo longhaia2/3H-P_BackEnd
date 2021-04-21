@@ -2,6 +2,10 @@ package tiengnhatmienphi.com.japanese.Model;
 
 import java.util.List;
 
+/**
+ * Phan Thi Dieu Hien
+ **/
+
 public class QuestionModel {
     private String content;
     private List<String> listAns;
