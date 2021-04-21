@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tiengnhatmienphi.com.japanese.Entity.Roomchallenge;
 import tiengnhatmienphi.com.japanese.Entity.User;
+import tiengnhatmienphi.com.japanese.Entity.UserRoom;
 import tiengnhatmienphi.com.japanese.Repository.RoomChallengeRepo;
 import tiengnhatmienphi.com.japanese.Repository.UserRoomRepository;
 
@@ -13,7 +14,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value = "/challenge")
+        @RequestMapping(value = "/challenge")
 public class RoomChallengeController {
 
     @Autowired
@@ -27,18 +28,11 @@ public class RoomChallengeController {
         repo.save(rc);
     }
 
-//    @PostMapping(value = "/{id}")
-//    public
+    @PostMapping(value = "/room-user")
+    public void addUserRoom(@RequestBody UserRoom rc){
+        userRoomRepository.save(rc);
+    }
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Lesson> get(@PathVariable Integer id) {
-//        try {
-//            Lesson ls = lessonrepo.findById(id).get();
-//            return new ResponseEntity<Lesson>(ls, HttpStatus.OK);
-//        } catch (NoSuchElementException e) {
-//            return new ResponseEntity<Lesson>(HttpStatus.NOT_FOUND);
-//        }
-//    }
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public List<Roomchallenge> getAll(){
         return repo.findAll();
@@ -54,4 +48,6 @@ public class RoomChallengeController {
             return ResponseEntity.ok("không tìm thấy!");
         }
     }
+
+
 }
