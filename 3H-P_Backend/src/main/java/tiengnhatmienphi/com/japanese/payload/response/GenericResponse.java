@@ -2,6 +2,10 @@ package tiengnhatmienphi.com.japanese.payload.response;
 
 import lombok.Data;
 
+/**
+ * Phan Thi Dieu Hien
+ **/
+
 @Data
 public class GenericResponse {
     private String error;

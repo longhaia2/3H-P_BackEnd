@@ -9,6 +9,10 @@ import org.springframework.stereotype.Component;
 import tiengnhatmienphi.com.japanese.Entity.User;
 import tiengnhatmienphi.com.japanese.Repository.UserRepository;
 
+/**
+ * Phan Thi Dieu Hien
+ **/
+
 @Component
 public class MyUserDetailsServiceImpl implements UserDetailsService {
     @Autowired

@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Phan Thi Dieu Hien
+ **/
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -49,6 +53,8 @@ public class Question {
     @JsonIgnore
     @ManyToMany(mappedBy = "questions")
     private List<Exam> exams;
+
+
 
 }
 
