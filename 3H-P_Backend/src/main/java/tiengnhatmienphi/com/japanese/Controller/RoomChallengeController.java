@@ -64,6 +64,8 @@ public class RoomChallengeController {
         }
     }
 
+    
+
     @PutMapping("update-score/{id}")
     public ResponseEntity<?> update(@RequestBody UserRoom st, @PathVariable Integer id) {
         try {
