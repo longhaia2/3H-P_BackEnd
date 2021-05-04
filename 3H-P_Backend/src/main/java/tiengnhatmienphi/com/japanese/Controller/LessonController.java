@@ -26,7 +26,6 @@ public class LessonController {
      */
     @GetMapping("/all")
     public List<Lesson> findAll() {
-
         return lessonrepo.findAll();
     }
 

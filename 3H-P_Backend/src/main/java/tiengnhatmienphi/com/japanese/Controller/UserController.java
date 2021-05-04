@@ -57,7 +57,7 @@ public class UserController {
             us.setPhoneNumber(uss.getPhoneNumber());
             us.setGender(uss.getGender());
             us.setFullName(uss.getFullName());
-            us.setImage(uss.getImage());
+//            us.setImage(uss.getImage());
             userRepo.save(us);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {

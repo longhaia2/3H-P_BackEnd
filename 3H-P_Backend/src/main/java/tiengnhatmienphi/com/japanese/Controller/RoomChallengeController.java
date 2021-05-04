@@ -4,13 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tiengnhatmienphi.com.japanese.Entity.Lesson;
-import tiengnhatmienphi.com.japanese.Entity.Roomchallenge;
-import tiengnhatmienphi.com.japanese.Entity.User;
-import tiengnhatmienphi.com.japanese.Entity.UserRoom;
+import tiengnhatmienphi.com.japanese.Entity.*;
 import tiengnhatmienphi.com.japanese.Repository.RoomChallengeRepo;
 import tiengnhatmienphi.com.japanese.Repository.UserRoomRepository;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -30,19 +26,27 @@ public class RoomChallengeController {
 
 
     @PostMapping(value = "/add")
-    public void addRoom(@RequestBody Roomchallenge rc){
-        repo.save(rc);
+    public Integer addRoom(@RequestBody Roomchallenge rc){
+       rc =  repo.save(rc);
+        return rc.getRoom_id();
     }
 
     @PostMapping(value = "/room-user")
-    public void addUserRoom(@RequestBody UserRoom rc){
-        userRoomRepository.save(rc);
+    public List<UserRoom> addRoomUser(@RequestBody UserRoom rc) {
+        List<UserRoom> lst = userRoomRepository.ListByRoomAndUser(rc.getRoom_id(), rc.getUser_id());
+        if (lst.size() < 1) {
+            userRoomRepository.save(rc);
+        }
+        return lst;
     }
+
 
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public List<Roomchallenge> getAll(){
         return repo.findAll();
     }
+
+
 
     @GetMapping("/room/{id}")
     public ResponseEntity<Object> get(@PathVariable(name = "id") Integer id){
@@ -54,6 +58,7 @@ public class RoomChallengeController {
             return ResponseEntity.ok("không tìm thấy!");
         }
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Roomchallenge> getroom(@PathVariable Integer id) {
         try {
@@ -64,17 +69,30 @@ public class RoomChallengeController {
         }
     }
 
-    
-
-    @PutMapping("update-score/{id}")
-    public ResponseEntity<?> update(@RequestBody UserRoom st, @PathVariable Integer id) {
-        try {
-            UserRoom lss = userRoomRepository.findById(id).get();
-            lss.setScore(st.getScore());
-            userRoomRepository.save(lss);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    @GetMapping("/dem/{id}")
+    public Integer Dem(@PathVariable int id){
+        return roomChallengeRepo.DemNguoi(id);
     }
+    @GetMapping("/user-banker/{room_id}")
+    public List<UserRoom> userRoomList(@PathVariable Integer room_id){
+        List<UserRoom> us= userRoomRepository.ListByRoom(room_id);
+        return us;
+    }
+    @GetMapping("/room-list-user/{room_id}")
+    public List<UserRoom> getUsersRoomList(@PathVariable Integer room_id){
+        List<UserRoom> us= userRoomRepository.ListUsersByRoom(room_id);
+        return us;
+    }
+
+//    @GetMapping("/user-by-score/{room_id}")
+//    public List<UserRoom> getListUsersByScore(@PathVariable Integer room_id){
+//        List<UserRoom> userRooms= userRoomRepository.ListUsersByScore(room_id);
+//        return userRooms;
+//    }
+    @GetMapping("/user-by-score/{room_id}")
+    public List<Object> getRoombyScore(@PathVariable Integer room_id){
+        List<Object> us= userRoomRepository.UsersByScore(room_id);
+        return us;
+    }
+
 }
