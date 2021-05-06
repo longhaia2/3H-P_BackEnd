@@ -8,7 +8,6 @@ import tiengnhatmienphi.com.japanese.Entity.Role;
 import tiengnhatmienphi.com.japanese.Entity.User;
 import tiengnhatmienphi.com.japanese.Entity.enums.ERole;
 import tiengnhatmienphi.com.japanese.Repository.RoleRepository;
-import tiengnhatmienphi.com.japanese.Repository.RoomChallengeRepo;
 import tiengnhatmienphi.com.japanese.Repository.UserRepository;
 
 import javax.annotation.PostConstruct;
@@ -37,7 +36,7 @@ public class JapaneseApplication {
             Role roleAdmin = new Role(ERole.ROLE_ADMIN);
             roleRepository.save(roleAdmin);
         }
-
+//
 //        User user = new User();
 //        user.setEnable(true);
 //        user.setUsername("admin");

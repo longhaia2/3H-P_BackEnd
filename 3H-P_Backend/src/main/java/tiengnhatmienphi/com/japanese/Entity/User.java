@@ -1,11 +1,11 @@
 package tiengnhatmienphi.com.japanese.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
+import java.util.Date;
 
 @Entity
 @Table
@@ -14,19 +14,14 @@ import java.util.List;
 @Data
 public class User extends Base{
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(unique = true)
-    private String username;;
+    @Column
+    private String username;
 
     @Column
     private String password;
 
     @Column
-    private String fullName;
+    private String fullname;
 
     @Column
     private String email;
@@ -37,11 +32,11 @@ public class User extends Base{
     @Column
     private String gender;
 
+
     @Column
     private boolean enable = true;
 
-
-    @JsonIgnore
+    // mapping to Role
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "role_id",
@@ -49,6 +44,7 @@ public class User extends Base{
     )
     private Role role;
 
+<<<<<<< HEAD
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @EqualsAndHashCode.Exclude
@@ -62,5 +58,7 @@ public class User extends Base{
     @JsonIgnore
     @OneToMany(mappedBy = "userResult",cascade = CascadeType.ALL)
     private List<Result> results;
+=======
+>>>>>>> 78910112e020a934e289d7c6656d71e94c33fca6
 
 }
