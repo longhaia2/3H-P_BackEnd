@@ -22,10 +22,9 @@ public class ExamQuestionController {
 
 
     @GetMapping("/list/{id}")
-    public ResponseEntity<Object> get(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity<Object> getExamByQS(@PathVariable(name = "id") Integer id) {
         try {
             Exam exam = examRepository.findById(id).get();
-//                List<ExamQuestion> examQuestions = examQRepository.findByExamQuestion(exam);
             List<Question> questions = exam.getQuestions();
             return ResponseEntity.ok(questions);
         } catch (NoSuchElementException e) {

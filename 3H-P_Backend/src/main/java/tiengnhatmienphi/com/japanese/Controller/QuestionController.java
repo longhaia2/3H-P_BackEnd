@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tiengnhatmienphi.com.japanese.Entity.Lesson;
 import tiengnhatmienphi.com.japanese.Entity.Question;
 import tiengnhatmienphi.com.japanese.Repository.QuestionRepository;
 
@@ -55,6 +56,11 @@ public class QuestionController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+//    @GetMapping("/cauhoi/{id}")
+//    public List<Question> getListQuestionByExamid(@PathVariable Integer id) {
+//        return questionRepository.getListQuestionByExamid(id);
+//    }
+    }
 
-}
+
 

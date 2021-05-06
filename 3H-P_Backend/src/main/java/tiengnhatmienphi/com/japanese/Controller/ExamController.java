@@ -65,4 +65,14 @@ public class ExamController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping(path = "/timkiem/{searchtext}")
+    public List<Exam> getfinIdBytext(@PathVariable String searchtext){
+        String search = "%" + searchtext + "%";
+        return repo.findByCodeExam(search);
+    }
+    @GetMapping("/{level}/ontap/{term}")
+    public List<Exam> findByLevelTerm(@PathVariable String level,@PathVariable String term) {
+        List<Exam> examList = repo.findByLevelTerm(level, term);
+        return examList;
+    }
 }

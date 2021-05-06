@@ -17,4 +17,7 @@ public interface LessonRepo extends JpaRepository<Lesson, Integer> {
 
     @Query("select  L from Lesson  as L order by L.id desc")
     List<Lesson> getLessonByDesc();
+
+    @Query(value ="select * from Lesson ls where  ls.lesson like ?1", nativeQuery = true)
+    List<Lesson> findByLesson(String searchText);
 }

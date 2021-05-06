@@ -3,9 +3,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tiengnhatmienphi.com.japanese.Entity.Exam;
 import tiengnhatmienphi.com.japanese.Entity.Lesson;
 import tiengnhatmienphi.com.japanese.Entity.User;
 import tiengnhatmienphi.com.japanese.Entity.enums.ERole;
+import tiengnhatmienphi.com.japanese.Repository.ExamRepository;
 import tiengnhatmienphi.com.japanese.Repository.RoleRepository;
 import tiengnhatmienphi.com.japanese.Repository.UserRepository;
 import java.util.List;
@@ -17,8 +19,7 @@ import java.util.NoSuchElementException;
 public class UserController {
     @Autowired
     private UserRepository userRepo;
-//    @Autowired
-//    private RoleRepository roleRepo;
+
     @GetMapping("/all")
     public List<User> findAll() {
         return userRepo.findAll();
@@ -60,4 +61,5 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
 }
