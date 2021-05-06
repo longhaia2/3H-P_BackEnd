@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 
 @Entity
 @Data
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Table(name = "user_room")
+@Transactional
 public class UserRoom {
 
     @Id
@@ -27,6 +29,13 @@ public class UserRoom {
 
     @Column(name = "score")
     private Integer score;
+
+    @Column(name = "banker")
+    private Integer banker;
+
+    @Column(name = "status")
+    private Integer status;
+
 
 
 

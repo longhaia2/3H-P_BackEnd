@@ -91,8 +91,7 @@ public class RoomChallengeController {
 //    }
     @GetMapping("/user-by-score/{room_id}")
     public List<Object> getRoombyScore(@PathVariable Integer room_id){
-        List<Object> us= userRoomRepository.UsersByScore(room_id);
-        return us;
+        return userRoomRepository.UsersByScore(room_id);
     }
 
 }
