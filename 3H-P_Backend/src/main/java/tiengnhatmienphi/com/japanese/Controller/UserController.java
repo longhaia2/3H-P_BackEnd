@@ -44,6 +44,15 @@ public class UserController {
     @GetMapping
     public ResponseEntity<?> updateRoleAdmin(@RequestParam(name = "username") String username) {
         try {
+
+            User us = userRepo.findById(id).get();
+            us.setId(uss.getId());
+            us.setUsername(uss.getUsername());
+            us.setEmail(uss.getEmail());
+            us.setPhoneNumber(uss.getPhoneNumber());
+            us.setGender(uss.getGender());
+            us.setFullName(uss.getFullName());
+//            us.setImage(uss.getImage());
             User us = userRepo.findByUsername(username).get();
             us.setRole(roleRepo.findByName(ERole.ROLE_ADMIN).get());
             userRepo.save(us);
