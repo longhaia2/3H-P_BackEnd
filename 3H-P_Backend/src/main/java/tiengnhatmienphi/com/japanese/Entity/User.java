@@ -53,10 +53,10 @@ public class User extends Base{
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @JoinTable(name = "user_room",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "room_id")
-    )
+//    @JoinTable(name = "user_room",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "room_id")
+//    )
     private List<Roomchallenge>rooms;
 
     @JsonIgnore

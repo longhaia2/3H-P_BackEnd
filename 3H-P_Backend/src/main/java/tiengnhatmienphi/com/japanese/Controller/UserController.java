@@ -16,6 +16,9 @@ import java.util.NoSuchElementException;
 public class UserController {
     @Autowired
     private UserRepository userRepo;
+    @RequestMapping(value = "/all",
+            produces = "application/json",
+            method=RequestMethod.GET)
 
     @GetMapping("/all")
     public List<User> findAll() {

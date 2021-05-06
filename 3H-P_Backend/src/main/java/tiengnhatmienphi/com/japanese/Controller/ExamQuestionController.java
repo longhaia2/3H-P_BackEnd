@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tiengnhatmienphi.com.japanese.Entity.*;
+import tiengnhatmienphi.com.japanese.Model.QuestionModel;
 import tiengnhatmienphi.com.japanese.Repository.ExamRepository;
 import tiengnhatmienphi.com.japanese.Repository.QuestionRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 @RestController
@@ -27,6 +29,20 @@ public class ExamQuestionController {
             Exam exam = examRepository.findById(id).get();
 //                List<ExamQuestion> examQuestions = examQRepository.findByExamQuestion(exam);
             List<Question> questions = exam.getQuestions();
+            return ResponseEntity.ok(questions);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.ok("Không tìm thấy!");
+        }
+    }
+
+
+    @GetMapping("/{level}/testjnpt/{id}")
+    public ResponseEntity<Object> getQuestionByLevelAndId(@PathVariable(name = "level") String level, @PathVariable(name = "id") Integer id) {
+        try {
+            Exam exams = examRepository.findByLevelAndId(level,id);
+
+            List<Question> questions = exams.getQuestions();
+
             return ResponseEntity.ok(questions);
         } catch (NoSuchElementException e) {
             return ResponseEntity.ok("Không tìm thấy!");

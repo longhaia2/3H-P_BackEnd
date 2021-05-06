@@ -75,18 +75,18 @@ public class QuestionServiceImpl implements QuestionService {
         query.setParameter(1,examId);
         List<Object[]> objects = query.getResultList();
 
-        for (Object[] record : objects) {
-            QuestionModel questionModel= new QuestionModel();
-            List<String> listAns= new ArrayList<>();
-            questionModel.setContent((String) record[0]);
-            listAns.add((String) record[1]);
-            listAns.add((String) record[2]);
-            listAns.add((String) record[3]);
-            listAns.add((String) record[4]);
-            questionModel.setAnsCorrect((history == true ? ((String) record[5]) : null ));
-            questionModel.setListAns(listAns);
-            listQuestion.add(questionModel);
-        }
+//        for (Object[] record : objects) {
+//            QuestionModel questionModel= new QuestionModel();
+//            List<String> listAns= new ArrayList<>();
+//            questionModel.setContent((String) record[0]);
+//            listAns.add((String) record[1]);
+//            listAns.add((String) record[2]);
+//            listAns.add((String) record[3]);
+//            listAns.add((String) record[4]);
+//            questionModel.setAnsCorrect((history == true ? ((String) record[5]) : null ));
+//            questionModel.setListAns(listAns);
+//            listQuestion.add(questionModel);
+//        }
         return listQuestion;
     }
 

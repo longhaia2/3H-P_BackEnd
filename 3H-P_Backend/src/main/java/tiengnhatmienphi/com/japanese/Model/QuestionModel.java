@@ -1,12 +1,20 @@
 package tiengnhatmienphi.com.japanese.Model;
 
+import javax.persistence.Column;
 import java.util.List;
 
 public class QuestionModel {
     private String content;
-    private List<String> listAns;
+
+    private String ansA;
+
+    private String ansB;
+
+    private String ansC;
+
+    private String ansD;
+
     private String ansCorrect;
-    private String yourAns;
 
     public String getContent() {
         return content;
@@ -16,12 +24,36 @@ public class QuestionModel {
         this.content = content;
     }
 
-    public List<String> getListAns() {
-        return listAns;
+    public String getAnsA() {
+        return ansA;
     }
 
-    public void setListAns(List<String> listAns) {
-        this.listAns = listAns;
+    public void setAnsA(String ansA) {
+        this.ansA = ansA;
+    }
+
+    public String getAnsB() {
+        return ansB;
+    }
+
+    public void setAnsB(String ansB) {
+        this.ansB = ansB;
+    }
+
+    public String getAnsC() {
+        return ansC;
+    }
+
+    public void setAnsC(String ansC) {
+        this.ansC = ansC;
+    }
+
+    public String getAnsD() {
+        return ansD;
+    }
+
+    public void setAnsD(String ansD) {
+        this.ansD = ansD;
     }
 
     public String getAnsCorrect() {
@@ -30,13 +62,5 @@ public class QuestionModel {
 
     public void setAnsCorrect(String ansCorrect) {
         this.ansCorrect = ansCorrect;
-    }
-
-    public String getYourAns() {
-        return yourAns;
-    }
-
-    public void setYourAns(String yourAns) {
-        this.yourAns = yourAns;
     }
 }
