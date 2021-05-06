@@ -1,6 +1,7 @@
 package tiengnhatmienphi.com.japanese.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -41,26 +42,28 @@ public class AuthController {
     @CrossOrigin
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody() AuthRequest loginRequest) {
-        if (userRepository.findByUsername(loginRequest.getUsername()).orElse(null) == null)
-            return  ResponseEntity.ok(new GenericResponse("Username không tồn tại")) ;
-        Authentication authentication;
+        try {
+            Authentication authentication;
             authentication =
                     authenticationManager.authenticate(
                             new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
 
-        // Set thông tin authentication vào Security Context
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        // Trả về jwt cho người dùng.
-        MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
-        String jwt = jwtTokenProvider.generateToken(userDetails);
+            // Set thông tin authentication vào Security Context
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            // Trả về jwt cho người dùng.
+            MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
+            String jwt = jwtTokenProvider.generateToken(userDetails);
 
-        return  ResponseEntity.ok(new LoginResponse(
-                userDetails.getUsername(),
-                jwt,
-                userDetails.getAuthorities().stream().findFirst().get().toString(),
-                userDetails.getUserId()
-        ));
+            return  ResponseEntity.ok(new LoginResponse(
+                    userDetails.getUsername(),
+                    jwt,
+                    userDetails.getAuthorities().stream().findFirst().get().toString(),
+                    userDetails.getUserId()
+            ));
+        } catch (RuntimeException exception) {
+            return  ResponseEntity.ok(new GenericResponse(HttpStatus.FORBIDDEN.toString(),"Tên đăng nhập hoặc mật khẩu không đúng"));
+        }
     }
 
     @CrossOrigin
