@@ -2,13 +2,24 @@ package tiengnhatmienphi.com.japanese.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import tiengnhatmienphi.com.japanese.Entity.Exam;
+import tiengnhatmienphi.com.japanese.Entity.Lesson;
+
+
 import tiengnhatmienphi.com.japanese.Entity.User;
 import tiengnhatmienphi.com.japanese.Entity.enums.ERole;
+import tiengnhatmienphi.com.japanese.Repository.ExamRepository;
 import tiengnhatmienphi.com.japanese.Repository.RoleRepository;
 import tiengnhatmienphi.com.japanese.Repository.UserRepository;
 import java.util.List;
 import java.util.NoSuchElementException;
+
+/**
+ * Phan Thi Dieu Hien
+ **/
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -16,12 +27,15 @@ import java.util.NoSuchElementException;
 public class UserController {
     @Autowired
     private UserRepository userRepo;
+
     @Autowired
     private RoleRepository roleRepo;
+
     @GetMapping("/all")
     public List<User> findAll() {
         return userRepo.findAll();
     }
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/add")
     public void add(@RequestBody User us) {
         userRepo.save(us);
@@ -38,16 +52,32 @@ public class UserController {
     @GetMapping
     public ResponseEntity<?> updateRoleAdmin(@RequestParam(name = "username") String username) {
         try {
+
+            User us = userRepo.findById(id).get();
+            us.setId(uss.getId());
+            us.setUsername(uss.getUsername());
+            us.setEmail(uss.getEmail());
+            us.setPhoneNumber(uss.getPhoneNumber());
+            us.setGender(uss.getGender());
+            us.setFullName(uss.getFullName());
+//            us.setImage(uss.getImage());
+
             User us = userRepo.findByUsername(username).get();
             us.setRole(roleRepo.findByName(ERole.ROLE_ADMIN).get());
+
             userRepo.save(us);
             return new ResponseEntity<User>(us, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
         }
     }
+
+
+
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Integer id) {
         userRepo.deleteById(id);
     }
+
 }

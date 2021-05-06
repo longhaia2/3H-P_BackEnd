@@ -50,5 +50,84 @@ public class Question {
     @ManyToMany(mappedBy = "questions")
     private List<Exam> exams;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getAnsA() {
+        return ansA;
+    }
+
+    public void setAnsA(String ansA) {
+        this.ansA = ansA;
+    }
+
+    public String getAnsB() {
+        return ansB;
+    }
+
+    public void setAnsB(String ansB) {
+        this.ansB = ansB;
+    }
+
+    public String getAnsC() {
+        return ansC;
+    }
+
+    public void setAnsC(String ansC) {
+        this.ansC = ansC;
+    }
+
+    public String getAnsD() {
+        return ansD;
+    }
+
+    public void setAnsD(String ansD) {
+        this.ansD = ansD;
+    }
+
+    public String getAnsCorrect() {
+        return ansCorrect;
+    }
+
+    public void setAnsCorrect(String ansCorrect) {
+        this.ansCorrect = ansCorrect;
+    }
+
+    public List<Exam> getExams() {
+        return exams;
+    }
+
+    public void setExams(List<Exam> exams) {
+        this.exams = exams;
+    }
 }
 

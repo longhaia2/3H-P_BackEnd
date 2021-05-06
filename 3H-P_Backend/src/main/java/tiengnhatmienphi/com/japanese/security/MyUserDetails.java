@@ -9,6 +9,10 @@ import tiengnhatmienphi.com.japanese.Entity.User;
 import java.util.Collection;
 import java.util.Collections;
 
+/**
+ * Phan Thi Dieu Hien
+ **/
+
 @AllArgsConstructor
 public class MyUserDetails implements UserDetails {
     private User user;

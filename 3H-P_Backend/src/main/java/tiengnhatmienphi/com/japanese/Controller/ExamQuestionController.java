@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value = "/question")
+@RequestMapping(value = "/exam")
 public class ExamQuestionController {
 
     @Autowired
@@ -22,16 +22,16 @@ public class ExamQuestionController {
 
 
     @GetMapping("/list/{id}")
-    public ResponseEntity<Object> get(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity<Object> getExamByQS(@PathVariable(name = "id") Integer id) {
         try {
             Exam exam = examRepository.findById(id).get();
-//                List<ExamQuestion> examQuestions = examQRepository.findByExamQuestion(exam);
             List<Question> questions = exam.getQuestions();
             return ResponseEntity.ok(questions);
         } catch (NoSuchElementException e) {
             return ResponseEntity.ok("Không tìm thấy!");
         }
     }
+
 
 
 }

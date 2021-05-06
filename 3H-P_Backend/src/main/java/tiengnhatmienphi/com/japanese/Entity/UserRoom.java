@@ -1,9 +1,11 @@
 package tiengnhatmienphi.com.japanese.Entity;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 
 @Entity
 @Table(name = "user_room")
+@Transactional
 public class UserRoom {
 
     @Id
@@ -15,5 +17,15 @@ public class UserRoom {
 
     @Column(name = "user_id")
     private Integer user_id;
+
+    @Column(name = "score")
+    private Integer score;
+
+    @Column(name = "banker")
+    private Integer banker;
+
+    @Column(name = "status")
+    private Integer status;
+
 
 }

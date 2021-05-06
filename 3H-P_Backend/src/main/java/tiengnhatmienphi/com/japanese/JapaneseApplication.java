@@ -13,7 +13,7 @@ import tiengnhatmienphi.com.japanese.Repository.UserRepository;
 
 import javax.annotation.PostConstruct;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"tiengnhatmienphi.com.japanese"})
 public class JapaneseApplication {
 
     public static void main(String[] args) {

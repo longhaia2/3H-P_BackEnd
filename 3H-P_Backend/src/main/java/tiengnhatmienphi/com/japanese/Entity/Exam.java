@@ -4,12 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import java.lang.reflect.GenericDeclaration;
-import java.lang.reflect.TypeVariable;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity()
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -65,9 +63,9 @@ public class Exam {
     )
     private List<Question> questions;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "exam_result",cascade = CascadeType.ALL)
-    private List<Result> listResult;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "exam_result",cascade = CascadeType.ALL)
+//    private List<Result> listResult;
 
 
 }

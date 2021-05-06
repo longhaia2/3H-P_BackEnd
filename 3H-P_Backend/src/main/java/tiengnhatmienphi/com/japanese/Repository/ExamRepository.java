@@ -38,5 +38,9 @@ public interface ExamRepository extends JpaRepository<Exam,Integer> {
 
     @Query("SELECT u from Exam  u where u.status=1 order by u.id desc ")
     List<Exam> getlistExamNew();
+    @Query(value ="select * from Exam ex where  ex.code_exam like ?1", nativeQuery = true)
+     List<Exam> findByCodeExam(String searchText);
+    @Query("SELECT L FROM Exam L WHERE  L.level = :level  AND L.term = :term")
+    List<Exam>findByLevelTerm(@Param("level") String level, @Param("term") String term);
 
 }
