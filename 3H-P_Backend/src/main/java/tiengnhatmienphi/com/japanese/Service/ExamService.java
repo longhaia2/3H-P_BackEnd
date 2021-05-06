@@ -2,11 +2,14 @@ package tiengnhatmienphi.com.japanese.Service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import tiengnhatmienphi.com.japanese.Entity.Exam;
 
 import java.util.List;
 import java.util.Optional;
 
+
+@Service
 public interface ExamService {
     Optional<Exam> findByExamId(Integer examId);
     List<Exam> getListExam();

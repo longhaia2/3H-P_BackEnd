@@ -51,4 +51,5 @@ public class User extends Base{
     @JsonIgnore
     @OneToMany(mappedBy = "userResult",cascade = CascadeType.ALL)
     private List<Result> results;
+
 }

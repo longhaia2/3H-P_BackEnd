@@ -12,7 +12,6 @@ import java.util.Date;
 /**
  * Phan Thi Dieu Hien
  **/
-
 @Getter
 @Setter
 @MappedSuperclass

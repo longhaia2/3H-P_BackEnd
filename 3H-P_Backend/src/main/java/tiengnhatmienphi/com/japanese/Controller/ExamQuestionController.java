@@ -32,17 +32,6 @@ public class ExamQuestionController {
         }
     }
 
-    @GetMapping("/{code_exam}/challenge/{id}")
-    public ResponseEntity<Object> getQuestionByLevelAndId(@PathVariable(name = "code_exam") String code_exam, @PathVariable(name = "id") Integer id) {
-        try {
-            Exam exams = examRepository.findByCodeExamAndId(code_exam,id);
-            List<Question> questions = exams.getQuestions();
-
-            return ResponseEntity.ok(questions);
-        } catch (NoSuchElementException e) {
-            return ResponseEntity.ok("Không tìm thấy!");
-        }
-    }
 
 
 }
