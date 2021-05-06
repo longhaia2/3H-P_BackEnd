@@ -1,4 +1,5 @@
 //package tiengnhatmienphi.com.japanese.Controller;
+//
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.http.ResponseEntity;
 //import org.springframework.stereotype.Controller;
@@ -15,13 +16,13 @@
 //
 //@Controller
 //@CrossOrigin(origins = "http://localhost:4200")
-//@RequestMapping(value = "/challenge")
+//@RequestMapping(value = "/room")
 //public class RoomUserController {
 //
 //    @Autowired
 //    private RoomChallengeRepo roomChallengeRepo;
 //
-//    @GetMapping("request/{id}")
+//    @GetMapping("/{id}")
 //    public ResponseEntity<Object> get(@PathVariable(name = "id") Integer id){
 //        try {
 //            Roomchallenge room =roomChallengeRepo.findById(id).get();
