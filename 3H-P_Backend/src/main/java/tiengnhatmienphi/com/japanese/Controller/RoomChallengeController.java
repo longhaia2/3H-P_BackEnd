@@ -1,10 +1,11 @@
 package tiengnhatmienphi.com.japanese.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tiengnhatmienphi.com.japanese.Entity.*;
+import tiengnhatmienphi.com.japanese.Entity.Roomchallenge;
+import tiengnhatmienphi.com.japanese.Entity.User;
 import tiengnhatmienphi.com.japanese.Repository.RoomChallengeRepo;
 import tiengnhatmienphi.com.japanese.Repository.UserRoomRepository;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-        @RequestMapping(value = "/challenge")
+@RequestMapping(value = "/challenge")
 public class RoomChallengeController {
 
     @Autowired
@@ -20,10 +21,6 @@ public class RoomChallengeController {
 
     @Autowired
     private UserRoomRepository userRoomRepository;
-
-    @Autowired
-    private RoomChallengeRepo roomChallengeRepo;
-
 
     @PostMapping(value = "/add")
     public Integer addRoom(@RequestBody Roomchallenge rc){
@@ -41,6 +38,18 @@ public class RoomChallengeController {
     }
 
 
+//    @PostMapping(value = "/{id}")
+//    public
+
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Lesson> get(@PathVariable Integer id) {
+//        try {
+//            Lesson ls = lessonrepo.findById(id).get();
+//            return new ResponseEntity<Lesson>(ls, HttpStatus.OK);
+//        } catch (NoSuchElementException e) {
+//            return new ResponseEntity<Lesson>(HttpStatus.NOT_FOUND);
+//        }
+//    }
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public List<Roomchallenge> getAll(){
         return repo.findAll();
@@ -51,13 +60,14 @@ public class RoomChallengeController {
     @GetMapping("/room/{id}")
     public ResponseEntity<Object> get(@PathVariable(name = "id") Integer id){
         try {
-            Roomchallenge room =roomChallengeRepo.findById(id).get();
+            Roomchallenge room =repo.findById(id).get();
             List<User> users = room.getUsers();
             return ResponseEntity.ok(users);
         } catch (NoSuchElementException e) {
             return ResponseEntity.ok("không tìm thấy!");
         }
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Roomchallenge> getroom(@PathVariable Integer id) {
