@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity()
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -4,8 +4,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import tiengnhatmienphi.com.japanese.Entity.Exam;
+import tiengnhatmienphi.com.japanese.Entity.Lesson;
+
+
 import tiengnhatmienphi.com.japanese.Entity.User;
 import tiengnhatmienphi.com.japanese.Entity.enums.ERole;
+import tiengnhatmienphi.com.japanese.Repository.ExamRepository;
 import tiengnhatmienphi.com.japanese.Repository.RoleRepository;
 import tiengnhatmienphi.com.japanese.Repository.UserRepository;
 import java.util.List;
@@ -21,8 +27,10 @@ import java.util.NoSuchElementException;
 public class UserController {
     @Autowired
     private UserRepository userRepo;
+
     @Autowired
     private RoleRepository roleRepo;
+
     @GetMapping("/all")
     public List<User> findAll() {
         return userRepo.findAll();
@@ -53,17 +61,23 @@ public class UserController {
             us.setGender(uss.getGender());
             us.setFullName(uss.getFullName());
 //            us.setImage(uss.getImage());
+
             User us = userRepo.findByUsername(username).get();
             us.setRole(roleRepo.findByName(ERole.ROLE_ADMIN).get());
+
             userRepo.save(us);
             return new ResponseEntity<User>(us, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
         }
     }
+
+
+
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Integer id) {
         userRepo.deleteById(id);
     }
+
 }
