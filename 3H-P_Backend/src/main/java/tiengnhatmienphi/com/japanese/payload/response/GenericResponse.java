@@ -5,8 +5,8 @@ import lombok.Data;
 
 /**
  * Phan Thi Dieu Hien
- * 30/04/2021: updated
  **/
+
 @Data
 @AllArgsConstructor
 public class GenericResponse {
@@ -32,3 +32,4 @@ public class GenericResponse {
         this.dataResponse = object;
     }
 }
+

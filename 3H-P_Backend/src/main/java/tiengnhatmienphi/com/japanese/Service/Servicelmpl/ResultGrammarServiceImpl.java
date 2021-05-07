@@ -16,13 +16,12 @@ import tiengnhatmienphi.com.japanese.payload.response.GenericResponse;
 import tiengnhatmienphi.com.japanese.payload.response.ResultGrammarReponse;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Service
 @Transactional
-public class ResultGrammarServicelmpl implements ResultGrammarService {
+ class ResultGrammarServicelmpl implements ResultGrammarService {
 
     @Autowired
     private ResultGrammarReponsitory resultGrammarReponsitory;

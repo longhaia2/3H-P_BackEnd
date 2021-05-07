@@ -26,7 +26,6 @@ public class User extends Base{
     private String email;
     @Column
     private String phoneNumber;
-
     @Column
     private String gender;
     @Column
@@ -47,9 +46,7 @@ public class User extends Base{
             inverseJoinColumns = @JoinColumn(name = "room_id")
     )
     private List<Roomchallenge>rooms;
-
     @JsonIgnore
     @OneToMany(mappedBy = "userResult",cascade = CascadeType.ALL)
     private List<Result> results;
-
 }

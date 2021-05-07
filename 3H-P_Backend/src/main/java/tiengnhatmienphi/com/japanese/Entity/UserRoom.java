@@ -1,16 +1,25 @@
 package tiengnhatmienphi.com.japanese.Entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.transaction.Transactional;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "user_room")
 @Transactional
 public class UserRoom {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @GeneratedValue
+    private Integer id;
 
     @Column(name = "room_id")
     private Integer room_id;
@@ -26,6 +35,9 @@ public class UserRoom {
 
     @Column(name = "status")
     private Integer status;
+
+
+
 
 
 }

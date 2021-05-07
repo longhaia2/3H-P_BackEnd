@@ -1,10 +1,7 @@
 package tiengnhatmienphi.com.japanese.payload.request;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
 import java.util.List;
-
 @Data
 @AllArgsConstructor
 public class ResultGrammarRequest {
@@ -12,4 +9,3 @@ public class ResultGrammarRequest {
     private Integer exam_id;
     private List<String> ansSelects;
 }
-

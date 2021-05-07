@@ -22,9 +22,10 @@ public class ExamQuestionController {
 
 
     @GetMapping("/list/{id}")
-    public ResponseEntity<Object> getExamByQS(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity<Object> get(@PathVariable(name = "id") Integer id) {
         try {
             Exam exam = examRepository.findById(id).get();
+//                List<ExamQuestion> examQuestions = examQRepository.findByExamQuestion(exam);
             List<Question> questions = exam.getQuestions();
             return ResponseEntity.ok(questions);
         } catch (NoSuchElementException e) {
@@ -32,6 +33,17 @@ public class ExamQuestionController {
         }
     }
 
+    @GetMapping("/{code_exam}/challenge/{id}")
+    public ResponseEntity<Object> getQuestionByLevelAndId(@PathVariable(name = "code_exam") String code_exam, @PathVariable(name = "id") Integer id) {
+        try {
+            Exam exams = examRepository.findByCodeExamAndId(code_exam,id);
+            List<Question> questions = exams.getQuestions();
+
+            return ResponseEntity.ok(questions);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.ok("Không tìm thấy!");
+        }
+    }
 
 
 }

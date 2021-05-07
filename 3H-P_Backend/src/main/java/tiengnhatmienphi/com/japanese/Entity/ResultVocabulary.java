@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table
+
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Data
 public class ResultVocabulary {
     @Id
