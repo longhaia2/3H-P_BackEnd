@@ -86,15 +86,16 @@ public class ExamServicelmpl implements ExamService {
         return null;
     }
 
+    @Override
+    public void updateStatus(Integer examId, Integer status) {
+
+    }
+
 //    @Override
 //    public Page<Exam> getListExamByClass(Integer classId, Pageable pageable) {
 //        return examRepository.getListExamByClass(classId,pageable);
 //    }
 
-    @Override
-    public void updateStatus(Integer examId, Integer status) {
-        examRepository.updateStatus(examId,status);
-    }
 
     @Override
     public List<Exam> getListExamNew() {
@@ -106,10 +107,6 @@ public class ExamServicelmpl implements ExamService {
         return null;
     }
 
-//    @Override
-//    public List<Exam> getlistExamByClass(Integer classId) {
-//        return examRepository.getlistExamByClass(classId);
-//    }
 
     @Override
     public List<Exam> getlistExamOrdedByIDDesc() {
