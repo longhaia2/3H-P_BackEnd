@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import tiengnhatmienphi.com.japanese.Entity.Lesson;
 import tiengnhatmienphi.com.japanese.Entity.Roomchallenge;
 import tiengnhatmienphi.com.japanese.Entity.UserRoom;
 import tiengnhatmienphi.com.japanese.Repository.RoomChallengeRepo;
@@ -21,8 +22,6 @@ public class RoomUserController {
 
     @Autowired
     private UserRoomRepository userRoomRepository;
-
-
     @PutMapping("/update-score/{id}")
     public ResponseEntity<?> update(@RequestBody UserRoom st, @PathVariable Integer id) {
         try{
@@ -38,4 +37,4 @@ public class RoomUserController {
     }
 
 
-    }
+}
