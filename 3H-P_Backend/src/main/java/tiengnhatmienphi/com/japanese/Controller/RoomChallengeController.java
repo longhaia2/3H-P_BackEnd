@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-        @RequestMapping(value = "/challenge")
+@RequestMapping(value = "/challenge")
 public class RoomChallengeController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class RoomChallengeController {
 
     @PostMapping(value = "/add")
     public Integer addRoom(@RequestBody Roomchallenge rc){
-       rc =  repo.save(rc);
+        rc =  repo.save(rc);
         return rc.getRoom_id();
     }
 
@@ -84,7 +84,7 @@ public class RoomChallengeController {
         return us;
     }
 
-//    @GetMapping("/user-by-score/{room_id}")
+    //    @GetMapping("/user-by-score/{room_id}")
 //    public List<UserRoom> getListUsersByScore(@PathVariable Integer room_id){
 //        List<UserRoom> userRooms= userRoomRepository.ListUsersByScore(room_id);
 //        return userRooms;
@@ -92,6 +92,12 @@ public class RoomChallengeController {
     @GetMapping("/user-by-score/{room_id}")
     public List<Object> getRoombyScore(@PathVariable Integer room_id){
         return userRoomRepository.UsersByScore(room_id);
+    }
+
+    @GetMapping("/top")
+    public List<Object> getTopHighByDesc() {
+        return userRoomRepository.getTopHighScoreByScore();
+//        return topList;
     }
 
 }
