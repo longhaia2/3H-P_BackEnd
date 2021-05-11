@@ -28,4 +28,9 @@ public class ResultGrammarController {
     public ResponseEntity<?> getResult(@PathVariable Integer id) {
         return ResponseEntity.ok(resultGrammarService.findById(id));
     }
+    @GetMapping("/ResultByID/{userId}")
+    public List<Object> GetResultById(@PathVariable Integer userId){
+        return resultGrammarReponsitory.FindResultByExam(userId);
+    }
+
 }
