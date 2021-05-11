@@ -3,6 +3,7 @@ package tiengnhatmienphi.com.japanese.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import tiengnhatmienphi.com.japanese.Entity.Lesson;
 import tiengnhatmienphi.com.japanese.Entity.UserRoom;
 
 import java.util.List;
@@ -20,4 +21,9 @@ public interface UserRoomRepository extends JpaRepository<UserRoom,Integer> {
 
     @Query("SELECT U.username, UR.score FROM User U, UserRoom UR WHERE (UR.room_id = ?1 and UR.user_id=U.id) order by UR.score desc")
        List<Object> UsersByScore(Integer room_id);
+
+    @Query("select  U.username,UR.score, e.content from User as U , UserRoom as UR, Exam e WHERE U.id = UR.user_id and e.id=UR.exam_id order by UR.score desc")
+    List<Object> getTopHighScoreByScore();
+
+
 }

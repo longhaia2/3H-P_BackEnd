@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tiengnhatmienphi.com.japanese.Entity.Exam;
 import tiengnhatmienphi.com.japanese.Entity.Lesson;
+import tiengnhatmienphi.com.japanese.Entity.UserRoom;
 import tiengnhatmienphi.com.japanese.Repository.ExamRepository;
 import tiengnhatmienphi.com.japanese.Repository.LessonRepo;
 import java.util.List;
@@ -46,6 +47,8 @@ public class LessonController {
         List<Lesson> lessonList = lessonrepo.getLessonByDesc();
         return lessonList;
     }
+
+
     /**
      * Api thêm mới
      * @param ls
