@@ -37,5 +37,17 @@ public class RoomUserController {
         }
     }
 
+    @PutMapping("/update-status/{id}")
+    public ResponseEntity<?> updateStatus(@RequestBody UserRoom st, @PathVariable Integer id) {
+        try{
+            UserRoom userRoom= userRoomRepository.findById(id).get();
+            userRoom.setStatus(st.getStatus());
+            userRoomRepository.save(userRoom);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
     }
