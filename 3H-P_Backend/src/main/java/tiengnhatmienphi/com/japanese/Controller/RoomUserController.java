@@ -19,6 +19,8 @@ import java.util.NoSuchElementException;
 @RequestMapping(value = "/challenge")
 public class RoomUserController {
 
+    @Autowired
+    RoomChallengeRepo repo;
 
     @Autowired
     private UserRoomRepository userRoomRepository;
@@ -47,6 +49,16 @@ public class RoomUserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
+    @PutMapping("/update-room/{id}")
+    public ResponseEntity<?> updateRoom(@RequestBody Roomchallenge st, @PathVariable Integer id) {
+        try{
+            Roomchallenge room= repo.findById(id).get();
+            room.setStatus(st.getStatus());
+            repo.save(room);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 }

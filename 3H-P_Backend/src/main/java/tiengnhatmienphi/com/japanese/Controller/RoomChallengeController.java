@@ -43,7 +43,7 @@ public class RoomChallengeController {
 
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public List<Roomchallenge> getAll(){
-        return repo.findAll();
+        return repo.GetRoom();
     }
 
 
@@ -68,6 +68,7 @@ public class RoomChallengeController {
             return new ResponseEntity<Roomchallenge>(HttpStatus.NOT_FOUND);
         }
     }
+
 
     @GetMapping("/dem/{id}")
     public Integer Dem(@PathVariable int id){
@@ -103,5 +104,6 @@ public class RoomChallengeController {
         return userRoomRepository.getTopHighScoreByScore();
 //        return topList;
     }
+
 
 }
