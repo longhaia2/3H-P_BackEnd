@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-        @RequestMapping(value = "/challenge")
+@RequestMapping(value = "/challenge")
 public class RoomChallengeController {
 
     @Autowired

@@ -71,7 +71,7 @@ public class AuthController {
     public ResponseEntity<Object> signup(@RequestBody AuthRequest registerRequest) {
         GenericResponse response = new GenericResponse();
         if (userRepository.findByUsername(registerRequest.getUsername()).orElse(null) != null) {
-            return ResponseEntity.ok(new GenericResponse("Đã tồn tại username này!"));
+            return ResponseEntity.ok(new GenericResponse(HttpStatus.BAD_REQUEST.toString(), "Đã tồn tại tên tài khoản này!"));
         }
         User user = new User();
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
@@ -87,4 +87,5 @@ public class AuthController {
 
         return ResponseEntity.ok(new GenericResponse("Tạo tài khoản thành công!"));
     }
+
 }

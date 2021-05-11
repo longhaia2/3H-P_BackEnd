@@ -22,7 +22,6 @@ public class ExamController {
 
     @GetMapping("/all")
     public List<Exam> findAll() {
-//        List<Exam> examList = ExamRepository.findBylevel( "De");
         return repo.findAll();
     }
     @GetMapping("pp/{level}")
