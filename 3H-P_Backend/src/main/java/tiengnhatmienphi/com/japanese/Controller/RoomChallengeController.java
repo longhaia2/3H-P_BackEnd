@@ -93,6 +93,10 @@ public class RoomChallengeController {
     public List<Object> getRoombyScore(@PathVariable Integer room_id){
         return userRoomRepository.UsersByScore(room_id);
     }
+    @GetMapping("user-room/{room_id}/{id}")
+    public List<UserRoom> getUser(@PathVariable Integer room_id,@PathVariable Integer id ) {
+        return userRoomRepository.ListByRoomAndUser(room_id, id);
+    }
 
     @GetMapping("/top")
     public List<Object> getTopHighByDesc() {
