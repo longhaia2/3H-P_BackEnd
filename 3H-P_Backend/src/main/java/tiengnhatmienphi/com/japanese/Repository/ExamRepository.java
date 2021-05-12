@@ -16,9 +16,13 @@ public interface ExamRepository extends JpaRepository<Exam,Integer> {
     Exam findByLevelAndId(String level, Integer id);
 
     Exam findByCodeExamAndId(String code_exam, Integer id);
+    //dang suy nghi dm
 
-    @Query("SELECT E FROM Exam E WHERE E.level = :level")
-    List<Exam>findBylevel(@Param("level") String level);
+    @Query("SELECT E FROM Exam E WHERE E.level = :level AND  E.term='Đề JPLT'order by E.id desc ")
+    List<Exam>findBylevelCodeExam(@Param("level") String level);
+
+    @Query("SELECT u from Exam  u where u.term='Đề JPLT' order by u.id desc ")
+    List<Exam> getlistExamOrderByJLPTDesc();
 
     @Query("SELECT u from Exam  u  order by u.id desc ")
     List<Exam> getlistExamOrderByIdDesc();

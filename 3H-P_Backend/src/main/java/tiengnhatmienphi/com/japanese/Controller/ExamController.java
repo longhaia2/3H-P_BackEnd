@@ -25,9 +25,14 @@ public class ExamController {
 //        List<Exam> examList = ExamRepository.findBylevel( "De");
         return repo.findAll();
     }
-    @GetMapping("pp/{level}")
-    public List<Exam> findBylevel(@PathVariable String level) {
-        List<Exam> examList = repo.findBylevel(level);
+    @GetMapping("/pp")
+    public List<Exam> getlistExamOrderByJLPTDesc() {
+        List<Exam> examList = repo.getlistExamOrderByJLPTDesc();
+        return examList;
+    }
+    @GetMapping("/pp/{level}")
+    public List<Exam> findBylevelCodeExam(@PathVariable String level) {
+        List<Exam> examList = repo.findBylevelCodeExam(level);
         return examList;
     }
     @PostMapping(value = "/add")
