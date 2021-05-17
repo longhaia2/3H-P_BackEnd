@@ -13,30 +13,17 @@ import javax.transaction.Transactional;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "user_room")
+@Table(name = "exam_question")
 @Transactional
-public class UserRoom {
-
+public class ExamQuestion {
     @Id
     @GeneratedValue
     private Integer id;
 
-    @Column(name = "room_id")
-    private Integer room_id;
-
-    @Column(name = "user_id")
-    private Integer user_id;
-
     @Column(name = "exam_id")
     private Integer exam_id;
+    @Column(name = "question_id")
+    private Integer room_id;
 
-    @Column(name = "score")
-    private Integer score;
-
-    @Column(name = "banker")
-    private Integer banker;
-
-    @Column(name = "status")
-    private Integer status;
 
 }

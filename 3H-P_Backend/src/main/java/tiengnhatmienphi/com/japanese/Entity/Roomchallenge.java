@@ -20,7 +20,7 @@ public class Roomchallenge {
     private String userCreate;
     private String level;
     private String pass;
-    private String time;
+    private int time;
     private int status;
     private int cout;
 

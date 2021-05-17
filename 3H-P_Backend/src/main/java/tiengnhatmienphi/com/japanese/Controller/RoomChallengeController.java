@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import tiengnhatmienphi.com.japanese.Entity.*;
 import tiengnhatmienphi.com.japanese.Repository.RoomChallengeRepo;
 import tiengnhatmienphi.com.japanese.Repository.UserRoomRepository;
+
+import java.sql.Array;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -59,6 +61,12 @@ public class RoomChallengeController {
         }
     }
 
+    @GetMapping("/GetUserByRoomAsc/{id}")
+    public ResponseEntity<Object>GetUserByRoomAsc(@PathVariable(name = "id") Integer id){
+        List<Object> user = roomChallengeRepo.GetUserByRoomAsc(id);
+        return ResponseEntity.ok(user);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Roomchallenge> getroom(@PathVariable Integer id) {
         try {
@@ -104,6 +112,8 @@ public class RoomChallengeController {
         return userRoomRepository.getTopHighScoreByScore();
 //        return topList;
     }
-
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Integer id) {
+        userRoomRepository.deleteById(id);}
 
 }
