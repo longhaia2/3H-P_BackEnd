@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import tiengnhatmienphi.com.japanese.Entity.*;
 import tiengnhatmienphi.com.japanese.Repository.RoomChallengeRepo;
 import tiengnhatmienphi.com.japanese.Repository.UserRoomRepository;
-
-import java.sql.Array;
 import java.util.List;
 import java.util.NoSuchElementException;
 
