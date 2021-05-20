@@ -22,8 +22,7 @@ public interface UserRoomRepository extends JpaRepository<UserRoom,Integer> {
     @Query("SELECT U.username, UR.score FROM User U, UserRoom UR WHERE (UR.room_id = ?1 and UR.user_id=U.id) order by UR.score desc")
        List<Object> UsersByScore(Integer room_id);
 
-    @Query("select  U.username,UR.score, e.content from User as U , UserRoom as UR, Exam e WHERE U.id = UR.user_id and e.id=UR.exam_id order by UR.score desc")
+    @Query("select u.username,max(ur.score),e.content from User u ,UserRoom ur ,Exam e where u.id=ur.user_id and ur.exam_id=e.id group by  u.username")
     List<Object> getTopHighScoreByScore();
-
 
 }
