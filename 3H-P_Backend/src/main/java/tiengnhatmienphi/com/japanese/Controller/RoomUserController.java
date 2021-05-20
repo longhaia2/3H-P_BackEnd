@@ -30,7 +30,6 @@ public class RoomUserController {
             UserRoom userRoom= userRoomRepository.findById(id).get();
             userRoom.setScore(st.getScore());
             userRoom.setBanker(st.getBanker());
-            userRoom.setStatus(st.getStatus());
             userRoomRepository.save(userRoom);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
