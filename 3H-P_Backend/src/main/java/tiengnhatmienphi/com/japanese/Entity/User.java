@@ -29,6 +29,8 @@ public class User extends Base{
     @Column
     private String gender;
     @Column
+    private String image;
+    @Column
     private boolean enable = true;
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
