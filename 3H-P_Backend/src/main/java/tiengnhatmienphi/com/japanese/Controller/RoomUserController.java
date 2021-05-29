@@ -30,7 +30,6 @@ public class RoomUserController {
             UserRoom userRoom= userRoomRepository.findById(id).get();
             userRoom.setScore(st.getScore());
             userRoom.setBanker(st.getBanker());
-            userRoom.setStatus(st.getStatus());
             userRoomRepository.save(userRoom);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
@@ -49,6 +48,18 @@ public class RoomUserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @PutMapping("/update-roomexam/{id}")
+    public ResponseEntity<?> updateRoomExam(@RequestBody UserRoom st, @PathVariable Integer id) {
+        try{
+            UserRoom userRoom= userRoomRepository.findById(id).get();
+            userRoom.setExam_id(st.getExam_id());
+            userRoomRepository.save(userRoom);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping("/update-room/{id}")
     public ResponseEntity<?> updateRoom(@RequestBody Roomchallenge st, @PathVariable Integer id) {
         try{
@@ -66,6 +77,7 @@ public class RoomUserController {
         try{
             UserRoom userRoom= userRoomRepository.findById(id).get();
             userRoom.setBanker(st.getBanker());
+            userRoom.setBanker(st.getStatus());
             userRoomRepository.save(userRoom);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
