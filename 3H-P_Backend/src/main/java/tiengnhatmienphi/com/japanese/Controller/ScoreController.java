@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/score")
 public class ScoreController {
-    // /score/grammar?username= ????  thì ghi s?
+
     @Autowired
     private ResultGrammarReponsitory resultGrammarReponsitory;
 
@@ -72,4 +72,26 @@ public class ScoreController {
         }
         return ResponseEntity.ok(new GenericResponse("Thành công", scores));
     }
+
+    @GetMapping("/result-all")
+    public List<Object> getAllResult(){
+        List<Object> allresult = resultGrammarReponsitory.getAllResult();
+        return allresult;
+    }
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Integer id) {
+        resultGrammarReponsitory.deleteById(id);
+    }
+
+    @GetMapping("/result-voca-all")
+    public List<Object> getAllResultVoCa(){
+        List<Object> allresult = resultVocabularyReponsitory.getAllResult();
+        return allresult;
+    }
+    @DeleteMapping("/delete-voca/{id}")
+    public void deleteVoca(@PathVariable Integer id) {
+        resultVocabularyReponsitory.deleteById(id);
+    }
+
+
 }

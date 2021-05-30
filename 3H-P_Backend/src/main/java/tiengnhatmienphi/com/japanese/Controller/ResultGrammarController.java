@@ -32,5 +32,13 @@ public class ResultGrammarController {
     public List<Object> GetResultById(@PathVariable Integer userId){
         return resultGrammarReponsitory.FindResultByExam(userId);
     }
+    @GetMapping(path = "/search/{searchtext}")
+    public List<Object> getfinbyuserNam(@PathVariable String searchtext){
+        return resultGrammarReponsitory.findbyusername(searchtext);
+    }
+    @GetMapping(path = "/search-code/{searchtext}")
+    public List<Object> getfinbyCodeExam(@PathVariable String searchtext){
+        return resultGrammarReponsitory.findbycodeExam(searchtext);
+    }
 
 }

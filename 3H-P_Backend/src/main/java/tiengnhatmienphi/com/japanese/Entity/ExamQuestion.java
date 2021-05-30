@@ -1,5 +1,6 @@
 package tiengnhatmienphi.com.japanese.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,13 +18,10 @@ import javax.transaction.Transactional;
 @Transactional
 public class ExamQuestion {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     @Column(name = "exam_id")
     private Integer exam_id;
     @Column(name = "question_id")
-    private Integer room_id;
-
-
+    private Integer question_id;
 }
