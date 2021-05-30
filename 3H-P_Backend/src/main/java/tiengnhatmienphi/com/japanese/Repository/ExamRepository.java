@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import tiengnhatmienphi.com.japanese.Entity.Exam;
+import tiengnhatmienphi.com.japanese.Entity.ExamQuestion;
+import tiengnhatmienphi.com.japanese.Entity.Question;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -16,7 +18,9 @@ public interface ExamRepository extends JpaRepository<Exam,Integer> {
     Exam findByLevelAndId(String level, Integer id);
 
     Exam findByCodeExamAndId(String code_exam, Integer id);
-    //dang suy nghi dm
+
+    @Query(value = "select count(*) from exam_question where exam_id=?1",nativeQuery = true)
+    Integer CoutQS(int exam_id);
 
     @Query("SELECT E FROM Exam E WHERE E.level = :level AND  E.term='Đề JLPT'order by E.id desc ")
     List<Exam>findBylevelCodeExam(@Param("level") String level);
@@ -41,5 +45,7 @@ public interface ExamRepository extends JpaRepository<Exam,Integer> {
 
     @Query("SELECT L FROM Exam L WHERE  L.level = :level  AND L.term = :term")
     List<Exam>findByLevelTerm(@Param("level") String level, @Param("term") String term);
+    @Query("SELECT Q FROM  Question Q where Q.level=:level")
+    List<Question>QsnotExam(String level);
 
 }

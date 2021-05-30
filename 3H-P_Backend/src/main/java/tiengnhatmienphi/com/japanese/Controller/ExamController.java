@@ -1,11 +1,14 @@
 package tiengnhatmienphi.com.japanese.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tiengnhatmienphi.com.japanese.Entity.Exam;
+import tiengnhatmienphi.com.japanese.Entity.ExamQuestion;
 import tiengnhatmienphi.com.japanese.Entity.Lesson;
+import tiengnhatmienphi.com.japanese.Entity.Question;
 import tiengnhatmienphi.com.japanese.Repository.ExamRepository;
 
 import java.util.List;
@@ -91,4 +94,14 @@ public class ExamController {
         List<Exam> examList = repo.findByLevelTerm(level, term);
         return examList;
     }
+    @GetMapping("/list-qs/{level}")
+    public List<Question> QsnotExam(@PathVariable String level) {
+        List<Question> qs= repo.QsnotExam(level);
+        return qs;
+    }
+    @GetMapping("/cout/{id}")
+    public Integer Dem(@PathVariable int id){
+        return repo.CoutQS(id);
+    }
+
 }
