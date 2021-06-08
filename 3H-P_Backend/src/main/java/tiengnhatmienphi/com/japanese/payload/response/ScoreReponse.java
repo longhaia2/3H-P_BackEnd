@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ScoreReponse {
+    private Integer Id;
     private Integer examId;
     private Integer score;
     private String codeExam;
     private String content;
+    private String date_test;
 }

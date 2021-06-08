@@ -33,7 +33,7 @@ public class ScoreController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/all")
+    @GetMapping("/all-grammar")
     public ResponseEntity<?> get(@RequestParam(name = "username") String username){
         User user = userRepository.findByUsername(username).orElse(null);
         if (user == null) {
@@ -42,21 +42,45 @@ public class ScoreController {
         List<ScoreReponse> scores = new ArrayList<>();
         for (ResultGrammar resultGrammar: resultGrammarReponsitory.findAllByUser_id(user.getId())) {
             ScoreReponse score = new ScoreReponse();
+            score.setId(resultGrammar.getId());
             score.setExamId(resultGrammar.getExam_id());
             score.setScore(resultGrammar.getScore());
             Exam exam = examRepository.findById(resultGrammar.getExam_id()).get();
             score.setCodeExam(exam.getCodeExam());
             score.setContent(exam.getContent());
+            score.setDate_test(resultGrammar.getDate_test());
 
             scores.add(score);
         }
+        for (Result result : resultRepository.findAllByUserResult(user.getId())) {
+            ScoreReponse score = new ScoreReponse();
+            score.setExamId(result.getExam_result().getId());
+            score.setScore(result.getScore().intValue());
+            Exam exam = result.getExam_result();
+            score.setCodeExam(exam.getCodeExam());
+            score.setContent(exam.getContent());
+
+            scores.add(score);
+        }
+        return ResponseEntity.ok(new GenericResponse("Thành công", scores));
+    }
+
+    @GetMapping("/all-voca")
+    public ResponseEntity<?> getVoca(@RequestParam(name = "username") String username){
+        User user = userRepository.findByUsername(username).orElse(null);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        List<ScoreReponse> scores = new ArrayList<>();
         for (ResultVocabulary resultVocabulary : resultVocabularyReponsitory.findAllByUser_id(user.getId())) {
             ScoreReponse score = new ScoreReponse();
+            score.setId(resultVocabulary.getId());
             score.setExamId(resultVocabulary.getExam_id());
             score.setScore(resultVocabulary.getScore());
             Exam exam = examRepository.findById(resultVocabulary.getExam_id()).get();
             score.setCodeExam(exam.getCodeExam());
             score.setContent(exam.getContent());
+            score.setDate_test(resultVocabulary.getDate_test());
 
             scores.add(score);
         }

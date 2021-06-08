@@ -46,6 +46,7 @@ public class ResultVocabularyServiceImpl implements ResultVocabularyService {
         List<Question> questions = exam.getQuestions();
         String listAnsSelect = new String();
         String listAnsCorrect = new String();
+        String date_test= new String();
         Integer score = 0;
 
 
@@ -69,6 +70,7 @@ public class ResultVocabularyServiceImpl implements ResultVocabularyService {
         resultVocabulary.setScore(score);
         resultVocabulary.setListAnsCorect(listAnsCorrect);
         resultVocabulary.setListAnsSelect(listAnsSelect);
+        resultVocabulary.setDate_test(date_test);
 
         resultVocabulary = resultVocabularyReponsitory.save(resultVocabulary);
 

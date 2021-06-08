@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tiengnhatmienphi.com.japanese.Entity.Lesson;
 import tiengnhatmienphi.com.japanese.Entity.ResultGrammar;
+import tiengnhatmienphi.com.japanese.Entity.ResultVocabulary;
 import tiengnhatmienphi.com.japanese.Repository.ResultGrammarReponsitory;
 import tiengnhatmienphi.com.japanese.Repository.ResultRepository;
 import tiengnhatmienphi.com.japanese.Service.ResultGrammarService;
@@ -40,5 +41,16 @@ public class ResultGrammarController {
     public List<Object> getfinbyCodeExam(@PathVariable String searchtext){
         return resultGrammarReponsitory.findbycodeExam(searchtext);
     }
-
+    @PutMapping("/add-date-gr/{id}")
+    public ResponseEntity<?> update(@RequestBody ResultGrammar st, @PathVariable Integer id) {
+        try {
+            ResultGrammar lss = resultGrammarReponsitory.findById(id).get();
+            lss.setId(st.getId());
+            lss.setDate_test(st.getDate_test());
+            resultGrammarReponsitory.save(lss);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

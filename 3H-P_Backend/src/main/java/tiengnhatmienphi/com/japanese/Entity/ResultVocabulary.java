@@ -30,4 +30,7 @@ public class ResultVocabulary {
 
     @Column(name = "listAnsCorect", columnDefinition="TEXT")
     private String listAnsCorect;
+
+    @Column(name = "date_test")
+    private String date_test;
 }
