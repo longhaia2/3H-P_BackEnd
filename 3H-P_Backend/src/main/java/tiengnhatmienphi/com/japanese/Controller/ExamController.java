@@ -5,10 +5,7 @@ import org.springframework.data.relational.core.sql.In;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tiengnhatmienphi.com.japanese.Entity.Exam;
-import tiengnhatmienphi.com.japanese.Entity.ExamQuestion;
-import tiengnhatmienphi.com.japanese.Entity.Lesson;
-import tiengnhatmienphi.com.japanese.Entity.Question;
+import tiengnhatmienphi.com.japanese.Entity.*;
 import tiengnhatmienphi.com.japanese.Repository.ExamRepository;
 
 import java.util.List;
@@ -38,8 +35,9 @@ public class ExamController {
         return examList;
     }
     @PostMapping(value = "/add")
-    public void addRoom(@RequestBody Exam rc){
-        repo.save(rc);
+    public Integer addRoom(@RequestBody Exam rc){
+        rc =  repo.save(rc);
+        return rc.getId();
     }
 
     @GetMapping("/{id}")

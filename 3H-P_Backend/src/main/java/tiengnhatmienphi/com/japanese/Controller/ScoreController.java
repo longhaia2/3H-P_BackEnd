@@ -49,7 +49,7 @@ public class ScoreController {
             score.setCodeExam(exam.getCodeExam());
             score.setContent(exam.getContent());
             score.setDate_test(resultGrammar.getDate_test());
-
+            score.setTotal_question(exam.getTotalQuestion());
             scores.add(score);
         }
         for (Result result : resultRepository.findAllByUserResult(user.getId())) {
@@ -80,6 +80,7 @@ public class ScoreController {
             Exam exam = examRepository.findById(resultVocabulary.getExam_id()).get();
             score.setCodeExam(exam.getCodeExam());
             score.setContent(exam.getContent());
+            score.setTotal_question(exam.getTotalQuestion());
             score.setDate_test(resultVocabulary.getDate_test());
 
             scores.add(score);

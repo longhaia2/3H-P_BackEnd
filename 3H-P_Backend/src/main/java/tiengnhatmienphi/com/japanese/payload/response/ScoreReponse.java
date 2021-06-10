@@ -15,4 +15,5 @@ public class ScoreReponse {
     private String codeExam;
     private String content;
     private String date_test;
+    private Integer total_question;
 }
